@@ -11,25 +11,25 @@ async function displayPosts(){
     // Acquiring the data from the posts
     // In this case, the data is an array of objects
     let data = await response.json()
-    // console.log(data)
+    console.log(data)
 
     //  Creating a loop to go through eacg element with the fetched array converted to json format and usind DOM 
-    data.forEach(async element => {
+    data.forEach( element => {
         // Test: Each object within the fetched array
-        // console.log(element)
-
+        let bodyContent = element.body
+        
         // DOM
         const li = document.createElement('li')
         const h1 = document.createElement('h1')
 
         // Acquiring the title key-value pair of the element of the fetched array's object
-        h1.textContent = await element.title
+        h1.textContent = element.title
         
         const p = document.createElement('p')
 
         // Acquiring the body key-value pair of the element of the fetched array's object
-        li.textContent = await element.body
-        
+        p.textContent = bodyContent
+        li.style.whiteSpace = 'pre'
 
         li.appendChild(h1)
         li.appendChild(p)
